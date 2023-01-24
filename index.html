@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Scientific calculator </title>
+    <link rel="shortcut icon" href="calc.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" ,initial-scale="1">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        
+            <div id="result">
+                <div id="history">
+                    <p id="history-value"></p>
+                </div>
+                <div id="output">
+                    <p id="output-value"></p>
+                </div>
+            </div>
+            <div id="keyboard">  
+                <div class="row">
+
+                    <button type="button" class="operator" id="degtorad" value="DEG" onclick="DegtoRad()">DEG
+                    </button>
+                    <button type="button" class="operator" onclick="toExp()">F - E
+                    </button>
+
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" id="mc" onclick="MemoryClear()">MC</button>
+                    <button type="button" class="operator" id="mr" onclick="MemoryRead()" >MR</button>
+                    <button type="button" class="operator" onclick="MemoryPlus()"> M+</button>
+                    <button type="button" class="operator" onclick="MemoryMinus()">M-</button>
+                    <button type="button" class="operator" onclick="Memory()">MS</button>
+                </div>
+                <div class="row1">
+                    
+                    <!-- < row 1 is for trigonometry and function > -->
+                    
+                    <div class="coloumn">
+                        <select name="Trigonometry" id="Trigonometry" onchange="Trigonometry()">
+                            <option disabled selected id="trigo"> ∆ Trigonometry</option>
+                            <option value="sin">sin</option>
+                            <option value="cos">cos</option>
+                            <option value="tan">tan</option>
+                            <option value="cot">cot</option>
+                        </select>
+                    </div>
+                    <div class="coloumn">
+                        <select name="Function" id="Function" onchange="Function()">
+                            <option disabled selected id="fun"> ƒ Function</option>
+                            <option value="abc">abc(x)</option>
+                            <option value="acos">acos(x)</option>
+                            <option value="asin">asin(x)</option>
+                            <option value="acosh">acosh(x)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" id="second">2<sup>nd</sup></button>
+                    <button type="button" class="operator" value="π" onclick="Num(value)">π</button>
+                    <button type="button" class="operator" value="e" onclick="Num(value)">e</button>
+                    <button type="button" class="operator" value="clear" onclick="Remove()">C</button>
+                    <button type="button" class="operator" id="backspace" onclick="Backspace()">⌫</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" value="x^2" onclick="power(value)">x<sup>2</sup></button>
+                    <button type="button" class="operator" value="x^-1" onclick="power(value)">1/x</button>
+                    <button type="button" class="operator" value="modex" onclick="PlusMinus(value)">|x|</button>
+                    <button type="button" class="operator" value="e^x" onclick="power(value)"><i>exp</i></button>
+                    <button type="button" class="operator" value="%" onclick="Num(value)">mod</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" value="x^0.5" onclick="power(value)">2√x</button>
+                    <button type="button" class="operator" value="(" onclick="Num(value)">(</button>
+                    <button type="button" class="operator" value=")" onclick="Num(value)">)</button>
+                    <button type="button" class="operator" value="!" onclick="Factorial(value)">n!</button>
+                    <button type="button" class="operator" value="/" onclick="Num(value)">÷</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" value="**" onclick="Num(value)">x<sup>y</sup></button>
+                    <button type="button" class="number" value="7" id="7" onclick="Num(value)"><b>7</b></button>
+                    <button type="button" class="number" value="8" id="8" onclick="Num(value)"><b>8</b></button>
+                    <button type="button" class="number" value="9" id="9" onclick="Num(value)"><b>9</b></button>
+                    <button type="button" class="operator" value="*" onclick="Num(value)">&times;</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="operator" value="10^x" onclick="power(value)">10<sup>x</sup></button>
+                    <button type="button" class="number" value="4" id="4" onclick="Num(value)"><b>4</b></button>
+                    <button type="button" class="number" value="5" id="5" onclick="Num(value)"><b>5</b></button>
+                    <button type="button" class="number" value="6" id="6" onclick="Num(value)"><b>6</b></button>
+                    <button type="button" class="operator" value="-" onclick="Num(value)">-</button>
+
+                </div>
+                <div class="row">
+
+                    <button type="button" class="operator" value="log" onclick="logerithm(value)">log</button>
+                    <button type="button" class="number" value="1" id="1" onclick="Num(value)"><b>1</b></button>
+                    <button type="button" class="number" value="2" id="2" onclick="Num(value)"><b>2</b></button>
+                    <button type="button" class="number" value="3" id="3" onclick="Num(value)"><b>3</b></button>
+                    <button type="button" class="operator" value="+" onclick="Num(value)">+</button>
+
+                </div>
+                <div class="row">
+
+                    <button type="button" class="operator" value="ln" onclick="logerithm(value)">ln</button>
+                    <button type="button" class="operator" value="+/-" onclick="PlusMinus(value)">+/-</button>
+                    <button type="button" class="number" value="0" onclick="Num(value)"><b>0</b></button>
+                    <button type="button" class="number" value="." onclick="Num(value)"><b>.</b></button>
+                    <button type="button" class="btn operator" id="equal" value="=" onclick="Equal()">=</button>
+                </div>
+            </div>
+        
+
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
