@@ -141,10 +141,12 @@ Function=()=>{
 Factorial=(value) =>{
     document.getElementById('equal').disabled=true;
     let num=history.innerHTML;
-    let fact=1;
+    console.log(num);
+   let fact = 1;
     history.innerHTML += value;
-    for(let i=2;i<=num;i++);{
-    fact=fact*1;
+    for(let i=num;i>=1;i--){
+     fact = fact*i;
+
     }
     result.innerHTML=fact;
 }
